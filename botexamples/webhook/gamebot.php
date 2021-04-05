@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 include 'Telegram.php';
 
 $bot_token = 'bot_token';
@@ -21,7 +22,7 @@ if ($data['inline_query'] !== null && $data['inline_query'] != '') {
     $query = $data['inline_query']['query'];
 
     if (strpos('gamename', $query) !== false) {
-        $results = json_encode([['type' => 'game', 'id'=> '1', 'game_short_name' => 'game_short']]);
+        $results = json_encode([['type' => 'game', 'id' => '1', 'game_short_name' => 'game_short']]);
         $content = ['inline_query_id' => $data['inline_query']['id'], 'results' => $results];
         $reply = $telegram->answerInlineQuery($content);
     }
@@ -32,7 +33,7 @@ if ($callback_query !== null && $callback_query != '') {
     $user_id = $data['callback_query']['from']['id'];
     $inline_id = $data['callback_query']['inline_message_id'];
 
-    $content = ['callback_query_id' => $telegram->Callback_ID(), 'url' => 'http://domain.com/gamefolder/?user_id='.$user_id.'&inline='.$inline_id];
+    $content = ['callback_query_id' => $telegram->Callback_ID(), 'url' => 'http://domain.com/gamefolder/?user_id=' . $user_id . '&inline=' . $inline_id];
     $telegram->answerCallbackQuery($content);
 }
 

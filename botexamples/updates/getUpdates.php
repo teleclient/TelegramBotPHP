@@ -1,10 +1,13 @@
 <?php
+
 /**
  * Telegram Bot Example whitout WebHook.
  * It uses getUpdates Telegram's API.
  *
  * @author Gabriele Grillo <gabry.grillo@alice.it>
  */
+
+declare(strict_types=1);
 include 'Telegram.php';
 
 $bot_token = 'bot_token';

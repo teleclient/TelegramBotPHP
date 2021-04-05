@@ -1,10 +1,13 @@
 <?php
+
 /**
  * Telegram Cowsay Bot Example.
  * Add @cowmooobot to try it!
  *
  * @author Gabriele Grillo <gabry.grillo@alice.it>
  */
+
+declare(strict_types=1);
 include 'Telegram.php';
 
 // Set the bot TOKEN
@@ -30,8 +33,8 @@ if ($text == '/start') {
     $telegram->sendMessage($content);
 }
 if ($text == '/cowsay' || $text == "\xF0\x9F\x90\xAE") {
-    $randstring = rand().sha1(time());
-    $cowurl = 'http://bangame.altervista.org/cowsay/fortune_image_w.php?preview='.$randstring;
+    $randstring = rand() . sha1(time());
+    $cowurl = 'http://bangame.altervista.org/cowsay/fortune_image_w.php?preview=' . $randstring;
     $content = ['chat_id' => $chat_id, 'text' => $cowurl];
     $telegram->sendMessage($content);
 }
